@@ -23,12 +23,14 @@ func main() {
    let _ = UnsafeMutablePointer<Int8>(mutating: url)!
 
    var width: Int32 = 0
-    var height: Int32 = 0
-    var pixelFormat: Int32 = 0
-    var inSubsamp: Int32 = 0
+   var align: Int32 = 0
+   var height: Int32 = 0
+   var pixelFormat: Int32 = 0
+   var inSubsamp: Int32 = 0
 
-    var _ = tjJPEGLoadCompressedImage(path, &width, 0, &height, &pixelFormat, &inSubsamp, 0)
+    var _ = tjJPEGLoadCompressedImage(filename: filenamepointer, width: &width, align: &align, height: &height, pixelFormat: &pixelFormat, inSubsamp: inSubsamp, flags: 0)
     print(width)
+    print(align)
     print(height)
     print(pixelFormat)
     print(inSubsamp)
