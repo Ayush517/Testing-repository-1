@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "libjpeg-swift",
+        "repositoryURL": "https://github.com/Ayush517/libjpeg-swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "678f43537fd8830596afa619335151ea6434b39c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
