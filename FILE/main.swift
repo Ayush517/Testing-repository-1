@@ -20,7 +20,7 @@ func main() {
 
    let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
    let url = (path as NSString).utf8String
-   let _ = UnsafeMutablePointer<Int8>(mutating: url)!
+   let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 
    var width: Int32 = 0
    var align: Int32 = 0
@@ -36,6 +36,4 @@ func main() {
     print(inSubsamp)
 }
 
-
-
-
+main()
