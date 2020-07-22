@@ -42,3 +42,31 @@ public func tjJPEGLoadCompressedImage( filename: UnsafePointer<Int8>?, width: in
 }
 
 
+func tjJPEGSaveImage(filename: UnsafePointer<Int8>?, buffer: UnsafePointer<UInt8>?, width: Int32, pitch: Int32, height: Int32, pixelFormat: Int32, outSubsamp: Int32, flags: Int32) -> Int32 {
+    
+    var jpegFile = fopen(filename, "wb")
+    var jpegBuf: UnsafeMutablePointer<UInt8>?
+    
+    var retVal: Int32 = -1
+    let outQual: Int32 = 95
+    var jpegSize: CUnsignedLong = 0
+    
+    var tjInstance = tjInitCompress();
+    tjCompress2(tjInstance, buffer, width, 0, height, pixelFormat, &jpegBuf, &jpegSize, outSubsamp, outQual, flags)
+    tjDestroy(tjInstance)
+    tjInstance = nil
+    
+    if (fwrite(jpegBuf, Int(jpegSize), 1, jpegFile) == 1){
+        retVal = 0
+        
+    }
+    tjDestroy(tjInstance)
+    tjInstance = nil
+    fclose(jpegFile)
+    jpegFile = nil
+    tjFree(jpegBuf)
+    jpegBuf = nil
+    
+    return retVal;
+    
+}
