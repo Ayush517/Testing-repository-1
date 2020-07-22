@@ -10,10 +10,6 @@ import Foundation
 import libjpeg
 
 public func tjJPEGLoadCompressedImage( filename: UnsafePointer<Int8>?, width: inout Int32, align: inout Int32,  height: inout Int32, pixelFormat: inout Int32, inSubsamp: Int32, flags: Int) -> UnsafeMutablePointer<UInt8>? {
-    
-    let scalingFactor = tjscalingfactor( num: 1, denom: 1 )
-    let inFormat = UnsafeMutablePointer<Int8>(mutating: "jpg")
-    let outFormat = UnsafeMutablePointer<Int8>(mutating: "jpg")
   
     pixelFormat = -1
  
