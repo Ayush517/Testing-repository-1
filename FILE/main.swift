@@ -11,7 +11,7 @@ import libjpeg
 
 let numScalingFactors = 0;
 
-let path = "/Users/ayush517/Downloads/tiger.jpg"
+let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
 let url = (path as NSString).utf8String
 let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
  
@@ -24,14 +24,14 @@ func main() {
     var pixelFormat: Int32 = 0
     let inSubsamp: Int32 = 0
 
-    var imgBuffer = tjJPEGLoadCompressedImage(filename: filenamepointer, width: &width, align: &align, height: &height, pixelFormat: &pixelFormat, inSubsamp: inSubsamp, flags: 0)
+    let imgBuffer = tjJPEGLoadCompressedImage(filename: filenamepointer, width: &width, align: &align, height: &height, pixelFormat: &pixelFormat, inSubsamp: inSubsamp, flags: 0)
     print(width)
     print(align)
     print(height)
     print(pixelFormat)
     print(inSubsamp)
     
-    let path2 = "/Users/ayush517/Downloads/savedImage.jpeg"
+    let path2 = "/Users/ayushitiwari/Downloads/tigerNEW.jpg"
     let url2 = (path2 as NSString).utf8String
     let filenamepointer2 = UnsafeMutablePointer<Int8>(mutating: url2)!
     
