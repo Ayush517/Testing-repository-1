@@ -9,7 +9,6 @@
 import Foundation
 import TensorFlow
 import libjpeg
-import ModelSupport
 
 public struct jtImage {
     public enum ByteOrdering {

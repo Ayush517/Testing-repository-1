@@ -8,13 +8,14 @@
 
 import Foundation
 import libjpeg
+import ModelSupport
 
 let numScalingFactors = 0;
-
-let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
-let url = (path as NSString).utf8String
-let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
- 
+//
+//let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
+//let url = (path as NSString).utf8String
+//let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
+//
 func main() {
     print("Hello, World!")
 
@@ -24,7 +25,7 @@ func main() {
     var pixelFormat: Int32 = 0
     let inSubsamp: Int32 = 0
 
-    let imgBuffer = tjJPEGLoadCompressedImage(filename: filenamepointer, width: &width, align: &align, height: &height, pixelFormat: &pixelFormat, inSubsamp: inSubsamp, flags: 0)
+    let imgBuffer = tjJPEGLoadCompressedImage(filenamepointer, &width, align, &height, &pixelFormat, inSubsamp, 0)
     print(width)
     print(align)
     print(height)
