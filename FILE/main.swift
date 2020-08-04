@@ -36,7 +36,7 @@ func main() {
     let url2 = (path2 as NSString).utf8String
     let filenamepointer2 = UnsafeMutablePointer<Int8>(mutating: url2)!
     
-    let retVal = SaveJPEG(atPath: path2, image: ImageData)
+    let retVal = SaveJPEG(atPath: path2, image: imgBuffer!)
     print(retVal)
     
 }
