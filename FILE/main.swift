@@ -11,11 +11,11 @@ import libjpeg
 import ModelSupport
 
 let numScalingFactors = 0;
-//
-//let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
-//let url = (path as NSString).utf8String
-//let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
-//
+
+let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
+let url = (path as NSString).utf8String
+let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
+
 func main() {
     print("Hello, World!")
 
@@ -25,7 +25,7 @@ func main() {
     var pixelFormat: Int32 = 0
     let inSubsamp: Int32 = 0
 
-    let imgBuffer = tjJPEGLoadCompressedImage(filenamepointer, &width, align, &height, &pixelFormat, inSubsamp, 0)
+    let imgBuffer = LoadJPEG(atPath: path)
     print(width)
     print(align)
     print(height)
@@ -36,8 +36,7 @@ func main() {
     let url2 = (path2 as NSString).utf8String
     let filenamepointer2 = UnsafeMutablePointer<Int8>(mutating: url2)!
     
-    let retVal = tjJPEGSaveImage(filename: filenamepointer2, buffer: imgBuffer, width: width, pitch: 0, height: height, pixelFormat: 0, outSubsamp: inSubsamp, flags: 0)
+    let retVal = SaveJPEG(atPath: path2, image: ImageData)
     print(retVal)
+    
 }
-
-main()

@@ -11,9 +11,9 @@ import libjpeg
 import TensorFlow
 import PythonKit
 
-let path = "/Users/ayush517/Downloads/tiger.jpg"
-let url = (path as NSString).utf8String
-let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
+//let path = "/Users/ayush517/Downloads/tiger.jpg"
+//let url = (path as NSString).utf8String
+//let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 
 //func test3() {
 //    var width: Int32 = 0

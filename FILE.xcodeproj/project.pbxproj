@@ -10,7 +10,6 @@
 		E83E236724C75E110044F528 /* jpegturbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E236624C75E110044F528 /* jpegturbo.swift */; };
 		E89B72A624C0C996002AB09B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B72A524C0C996002AB09B /* main.swift */; };
 		E89B72B124C0CB19002AB09B /* libjpeg-swift in Frameworks */ = {isa = PBXBuildFile; productRef = E89B72B024C0CB19002AB09B /* libjpeg-swift */; };
-		E8E14FCC24D3094700A8316E /* ImageOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E14FCB24D3094700A8316E /* ImageOps.swift */; };
 		E8E14FCE24D3094F00A8316E /* jpegturboTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E14FCD24D3094F00A8316E /* jpegturboTesting.swift */; };
 		E8E14FD024D3095D00A8316E /* jtImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E14FCF24D3095D00A8316E /* jtImage.swift */; };
 		E8E14FD324D30A1900A8316E /* VideoClassificationModels in Frameworks */ = {isa = PBXBuildFile; productRef = E8E14FD224D30A1900A8316E /* VideoClassificationModels */; };
@@ -44,7 +43,6 @@
 		E83E236624C75E110044F528 /* jpegturbo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jpegturbo.swift; sourceTree = "<group>"; };
 		E89B72A224C0C996002AB09B /* FILE */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FILE; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89B72A524C0C996002AB09B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		E8E14FCB24D3094700A8316E /* ImageOps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOps.swift; sourceTree = "<group>"; };
 		E8E14FCD24D3094F00A8316E /* jpegturboTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jpegturboTesting.swift; sourceTree = "<group>"; };
 		E8E14FCF24D3095D00A8316E /* jtImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jtImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +94,6 @@
 				E89B72A524C0C996002AB09B /* main.swift */,
 				E8E14FCD24D3094F00A8316E /* jpegturboTesting.swift */,
 				E8E14FCF24D3095D00A8316E /* jtImage.swift */,
-				E8E14FCB24D3094700A8316E /* ImageOps.swift */,
 				E83E236624C75E110044F528 /* jpegturbo.swift */,
 			);
 			path = FILE;
@@ -179,7 +176,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8E14FCC24D3094700A8316E /* ImageOps.swift in Sources */,
 				E8E14FCE24D3094F00A8316E /* jpegturboTesting.swift in Sources */,
 				E83E236724C75E110044F528 /* jpegturbo.swift in Sources */,
 				E8E14FD024D3095D00A8316E /* jtImage.swift in Sources */,

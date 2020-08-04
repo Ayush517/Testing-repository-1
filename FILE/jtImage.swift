@@ -63,7 +63,7 @@ public struct jtImage {
             
             self.imageData = loadedData
             let data = [UInt8](UnsafeBufferPointer(start: self.imageData.data, count: Int(self.imageData.width * self.imageData.height * 3)))
-            var loadedTensor = Tensor<UInt8>(
+            let loadedTensor = Tensor<UInt8>(
                 shape: [Int(self.imageData.height), Int(self.imageData.width), 3], scalars: data)
             self.imageTensor = .uint8(data: loadedTensor)
         }
