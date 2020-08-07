@@ -100,7 +100,7 @@ func LoadJPEG(atPath path: String, imageFormat: pixelFormats) -> ImageData? {
     /* Initializes `width` and `height` variables */
     tjDecompressHeader(tjInstance, jpegBuf, UInt(jpegSize), &width, &height)
     
-    let imgBuf = tjAlloc(3 * width * height)
+    let imgBuf = tjAlloc(imageFormat.channelCount * width * height)
     
     //print(3*width*height)
     

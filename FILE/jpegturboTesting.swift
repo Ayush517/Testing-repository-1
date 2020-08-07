@@ -52,7 +52,7 @@ func test4() {
 //    let size = ftell(jpegFile)
 //    print(size)
 
-    let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 3)
+    let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 4)
     let imgTensor = img.resized(to: (160, 160)).tensor / 255.0
     showTensorImage(imgTensor)
     let path = "/Users/ayush517/Downloads/jttiger.jpg"

@@ -84,6 +84,9 @@ public struct jtImage {
                 }
             }
             
+            // print(finalChannelCount)
+            // print(finalPixel)
+            
             guard let loadedData = LoadJPEG(atPath: url.path, imageFormat: finalPixel) else {
                 // TODO: Proper error propagation for this.
                 fatalError("Unable to read image at: \(url.path).")
@@ -92,7 +95,7 @@ public struct jtImage {
             self.imageData = loadedData
             let data = [UInt8](UnsafeBufferPointer(start: self.imageData.data, count: Int(self.imageData.width * self.imageData.height * finalChannelCount)))
             var loadedTensor = Tensor<UInt8>(
-                shape: [Int(self.imageData.height), Int(self.imageData.width), 3], scalars: data)
+                shape: [Int(self.imageData.height), Int(self.imageData.width), Int(finalChannelCount)], scalars: data)
             self.imageTensor = .uint8(data: loadedTensor)
         }
     }
