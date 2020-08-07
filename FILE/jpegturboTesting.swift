@@ -11,9 +11,9 @@ import libjpeg
 import TensorFlow
 import PythonKit
 
-//let path = "/Users/ayush517/Downloads/tiger.jpg"
-//let url = (path as NSString).utf8String
-//let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
+let path = "/Users/ayush517/Downloads/tiger.jpg"
+let url = (path as NSString).utf8String
+let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 
 //func test3() {
 //    var width: Int32 = 0
@@ -52,7 +52,7 @@ func test4() {
 //    let size = ftell(jpegFile)
 //    print(size)
 
-    let img = jtImage(jpeg: URL(string: path)!)
+    let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 3)
     let imgTensor = img.resized(to: (160, 160)).tensor / 255.0
     showTensorImage(imgTensor)
     let path = "/Users/ayush517/Downloads/jttiger.jpg"

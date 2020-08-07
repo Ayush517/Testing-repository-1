@@ -47,7 +47,7 @@ public struct jtImage {
         self.imageData = data
     }
 
-    public init(jpeg url: URL, byteOrdering: ByteOrdering = .rgb) {
+    public init(jpeg url: URL, byteOrdering: ByteOrdering = .rgb, imageFormat: pixelFormats = .RGB888, channelCount: Int32 = 3) {
         if byteOrdering == .bgr {
             // TODO: Add BGR byte reordering.
             fatalError("BGR byte ordering is currently unsupported.")
@@ -57,14 +57,41 @@ public struct jtImage {
                 fatalError("File does not exist at: \(url.path).")
             }
             
-            guard let loadedData = LoadJPEG(atPath: url.path) else {
+            let finalChannelCount: Int32
+            
+            if (imageFormat != .YUV400) && (channelCount == 3 || channelCount == 4) && (channelCount <= imageFormat.channelCount) {
+                finalChannelCount = channelCount
+            } else if imageFormat == .YUV400 {
+                finalChannelCount = 1
+            } else {
+                fatalError("Invalid Channel Count")
+            }
+            if finalChannelCount==0 {
+                fatalError("Invalid Channel Count")
+            }
+            
+            var finalPixel: pixelFormats = imageFormat
+            
+            if channelCount == 3 && imageFormat.channelCount == 4 {
+                if imageFormat.self == .RGBA8888 {
+                    finalPixel = .RGB888
+                } else if imageFormat.self == .BGRA8888 {
+                    finalPixel = .BGR888
+                } else if imageFormat.self == .ARGB8888 {
+                    finalPixel = .RGB888
+                } else if imageFormat.self == .ABGR8888 {
+                    finalPixel = .BGR888
+                }
+            }
+            
+            guard let loadedData = LoadJPEG(atPath: url.path, imageFormat: finalPixel) else {
                 // TODO: Proper error propagation for this.
                 fatalError("Unable to read image at: \(url.path).")
             }
             
             self.imageData = loadedData
-            let data = [UInt8](UnsafeBufferPointer(start: self.imageData.data, count: Int(self.imageData.width * self.imageData.height * 3)))
-            let loadedTensor = Tensor<UInt8>(
+            let data = [UInt8](UnsafeBufferPointer(start: self.imageData.data, count: Int(self.imageData.width * self.imageData.height * finalChannelCount)))
+            var loadedTensor = Tensor<UInt8>(
                 shape: [Int(self.imageData.height), Int(self.imageData.width), 3], scalars: data)
             self.imageTensor = .uint8(data: loadedTensor)
         }
