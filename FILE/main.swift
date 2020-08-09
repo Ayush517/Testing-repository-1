@@ -12,9 +12,9 @@ import ModelSupport
 
 let numScalingFactors = 0;
 
-let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
-let url = (path as NSString).utf8String
-let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
+//let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
+//let url = (path as NSString).utf8String
+//let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 
 func main() {
     print("Hello, World!")
@@ -25,7 +25,7 @@ func main() {
     var pixelFormat: Int32 = 0
     let inSubsamp: Int32 = 0
 
-    let imgBuffer = LoadJPEG(atPath: path)
+    let imgBuffer = LoadJPEG(atPath: path, imageFormat: .RGB888)
     print(width)
     print(align)
     print(height)

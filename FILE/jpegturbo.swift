@@ -65,7 +65,7 @@ public struct ImageData {
 }
  
 
-func LoadJPEG(atPath path: String) -> ImageData? {
+func LoadJPEG(atPath path: String, imageFormat: pixelFormats ) -> ImageData? {
     
     /* Read the JPEG file into memory. */
     var jpegFile = fopen(path, "rb")
