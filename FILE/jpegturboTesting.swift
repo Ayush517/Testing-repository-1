@@ -5,15 +5,10 @@
 //  Created by Ayush Agrawal on 12/06/20.
 //  Copyright © 2020 Ayush Agrawal. All rights reserved.
 //
-
 import Foundation
 import libjpeg
 import TensorFlow
 import PythonKit
-
-let path = "/Users/ayush517/Downloads/tiger.jpg"
-let url = (path as NSString).utf8String
-let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 
 //func test3() {
 //    var width: Int32 = 0
@@ -45,13 +40,11 @@ let filenamepointer = UnsafeMutablePointer<Int8>(mutating: url)!
 //    let status2 = tjJPEGSaveImage(filenamepointer4, imgDe, width, 0, height, 0, inSubsamp, 0)
 //    print(status2)
 //}
-
 func test4() {
 //    let jpegFile = fopen(filenamepointer, "rb")
 //    fseek(jpegFile, 0, SEEK_END)
 //    let size = ftell(jpegFile)
 //    print(size)
-
     let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 4)
     let imgTensor = img.resized(to: (160, 160)).tensor / 255.0
     showTensorImage(imgTensor)

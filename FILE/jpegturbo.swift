@@ -1,11 +1,9 @@
-
 //
 //  jpegturbo.c
 //  FILE
 //
 //  Created by Ayushi Tiwari on 2020-07-21.
 //  Copyright © 2020 Ayushi Tiwari. All rights reserved.
-
 import Foundation
 import libjpeg
 
