@@ -137,7 +137,7 @@ func SaveJPEG(atPath path : String, image: ImageData) -> Int32 {
     
     var retVal: Int32 = -1
     let outQual: Int32 = 95
-    var jpegSize: CUnsignedLong = 0
+    var jpegSize: UInt = 0
     
     var compressor = tjInitCompress();
     /* Compress the Image Data from `buffer` into `jpegBuf`
