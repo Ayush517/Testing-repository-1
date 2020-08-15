@@ -131,15 +131,19 @@ func LoadJPEG(atPath path: String, imageFormat: pixelFormats) -> ImageData? {
 
 func SaveJPEG(atPath path : String, image: ImageData) -> Int32 {
     
-    /* Create new file */
-    var jpegFile = fopen(path, "wb")
+    do {
+        try FileManager.default.removeItem(atPath: path)
+    } catch {
+        // File not present
+    }
+    
     var jpegBuf: UnsafeMutablePointer<UInt8>?
     
     var retVal: Int32 = -1
     let outQual: Int32 = 95
     var jpegSize: UInt = 0
     
-    var compressor = tjInitCompress();
+    var compressor = tjInitCompress()
     /* Compress the Image Data from `buffer` into `jpegBuf`
      - Compresses image.data
      - `width` = width of Image
@@ -153,18 +157,22 @@ func SaveJPEG(atPath path : String, image: ImageData) -> Int32 {
      - `flags` = 0
      */
     tjCompress2(compressor, image.data, image.width, 0, image.height, image.formatProperties.rawValue, &jpegBuf, &jpegSize, 0, outQual, 0)
+
+    let bufferPointer  = UnsafeMutableBufferPointer.init(start: jpegBuf, count: Int(jpegSize))
+    let jpegData = Data.init(buffer: bufferPointer)
     
-    if (fwrite(jpegBuf, Int(jpegSize), 1, jpegFile) == 1){
+    do {
+        try FileManager.default.createFile(atPath: path, contents: jpegData)
         retVal = 0
+    } catch {
+        // File not created
     }
     
     /* Free/Destroy instances and buffers */
     tjDestroy(compressor)
     compressor = nil
-    fclose(jpegFile)
-    jpegFile = nil
     tjFree(jpegBuf)
     jpegBuf = nil
     
-    return retVal;
+    return retVal
 }
