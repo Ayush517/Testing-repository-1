@@ -23,3 +23,7 @@ so if they ask to decompress as RGB you decompress as RGB, if they want BGR you 
 ### Use FileManager for writing/loading a file
 
 ### Think of Unit Test for ImageOps
+
+## CMake
+## remove commented code
+## Add error handling
