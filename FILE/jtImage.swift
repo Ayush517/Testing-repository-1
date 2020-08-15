@@ -16,37 +16,37 @@ public struct jtImage {
         case bgr
         case rgb
     }
-
+    
     public enum Colorspace {
         case rgb
         case grayscale
     }
-
+    
     enum ImageTensor {
         case float(data: Tensor<Float>)
         case uint8(data: Tensor<UInt8>)
     }
-
+    
     let imageTensor: ImageTensor
     let imageData: ImageData
-
+    
     public var tensor: Tensor<Float> {
         switch self.imageTensor {
         case let .float(data): return data
         case let .uint8(data): return Tensor<Float>(data)
         }
     }
-
+    
     public init(tensor: Tensor<UInt8>, data: ImageData) {
         self.imageTensor = .uint8(data: tensor)
         self.imageData = data
     }
-
+    
     public init(tensor: Tensor<Float>, data: ImageData) {
         self.imageTensor = .float(data: tensor)
         self.imageData = data
     }
-
+    
     public init(jpeg url: URL, byteOrdering: ByteOrdering = .rgb, imageFormat: pixelFormats = .RGB888, channelCount: Int32 = 3) {
         if byteOrdering == .bgr {
             // TODO: Add BGR byte reordering.
@@ -95,15 +95,15 @@ public struct jtImage {
             self.imageData = loadedData
             let data = [UInt8](UnsafeBufferPointer(start: self.imageData.data, count: Int(self.imageData.width * self.imageData.height * finalChannelCount)))
             var loadedTensor = Tensor<UInt8>(
-                shape: [Int(self.imageData.height), Int(self.imageData.width), Int(finalChannelCount)], scalars: data)
+                    shape: [Int(self.imageData.height), Int(self.imageData.width), Int(finalChannelCount)], scalars: data)
             self.imageTensor = .uint8(data: loadedTensor)
         }
     }
-
+    
     public func save(to url: URL, format: Colorspace = .rgb, quality: Int64 = 95) {
         let outputImageData: Tensor<UInt8>
         let bpp: Int32
-
+        
         switch format {
         case .grayscale:
             bpp = 1
@@ -130,7 +130,7 @@ public struct jtImage {
             fatalError("Unable to save image to: \(url.path).")
         }
     }
-
+    
     public func resized(to size: (Int, Int)) -> jtImage {
         switch self.imageTensor {
         case let .uint8(data):
@@ -149,13 +149,13 @@ public func saveImage(
     quality: Int64 = 95
 ) throws {
     try createDirectoryIfMissing(at: directory)
-
+    
     let channels: Int
     switch format {
     case .rgb: channels = 3
     case .grayscale: channels = 1
     }
-
+    
     let reshapedTensor = tensor.reshaped(to: [shape.0, shape.1, channels])
     let image = jtImage(tensor: reshapedTensor, data: data)
     let resizedImage = size != nil ? image.resized(to: (size!.0, size!.1)) : image

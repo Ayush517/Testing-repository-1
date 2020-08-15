@@ -17,11 +17,11 @@ let path = "/Users/ayush517/Downloads/tiger.jpg"
 
 func main() {
     print("Hello, World!")
-
+    
     let imgBuffer = LoadJPEG(atPath: path, imageFormat: .RGB888)
-
+    
     let path2 = "/Users/ayush517/Downloads/tigerNEWAug16.jpg"
-
+    
     let retVal = SaveJPEG(atPath: path2, image: imgBuffer!)
     print(retVal)
 }

@@ -41,10 +41,10 @@ import PythonKit
 //    print(status2)
 //}
 func test4() {
-//    let jpegFile = fopen(filenamepointer, "rb")
-//    fseek(jpegFile, 0, SEEK_END)
-//    let size = ftell(jpegFile)
-//    print(size)
+    //    let jpegFile = fopen(filenamepointer, "rb")
+    //    fseek(jpegFile, 0, SEEK_END)
+    //    let size = ftell(jpegFile)
+    //    print(size)
     let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 4)
     let imgTensor = img.resized(to: (160, 160)).tensor / 255.0
     showTensorImage(imgTensor)
