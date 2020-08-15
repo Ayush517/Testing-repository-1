@@ -9,6 +9,16 @@
 import Foundation
 import libjpeg
 
+#if os(iOS) || os(macOS) || os(tvOS) || os(watchOS)
+    import Darwin
+#elseif os(Android) || os(Linux)
+    import Glibc
+#elseif os(Windows)
+    import ucrt
+#else
+#error ("C library not known for the target OS")
+#endif
+
 public enum pixelFormats: Int32 {
     case RGB888 = 0     // TJPF_RGB
     case BGR888 = 1      // TJPF_BGR
