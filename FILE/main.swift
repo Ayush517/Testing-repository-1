@@ -11,18 +11,15 @@ import libjpeg
 import TensorFlow
 import ModelSupport
 
-let numScalingFactors = 0;
-
 let path = "/Users/ayush517/Downloads/tiger.jpg"
-
 func main() {
     print("Hello, World!")
     
-    let imgBuffer = LoadJPEG(atPath: path, imageFormat: .RGB888)
+    let imgBuffer = try! LoadJPEG(atPath: path, imageFormat: .RGB888)
     
-    let path2 = "/Users/ayush517/Downloads/tigerNEWAug16.jpg"
+    let path2 = "/Users/ayush517/Downloads/tigerNEWAug23.jpg"
     
-    let retVal = SaveJPEG(atPath: path2, image: imgBuffer!)
+    let retVal = try! SaveJPEG(atPath: path2, image: imgBuffer!, dataPointer: imgBuffer!.buffer)
     print(retVal)
 }
 

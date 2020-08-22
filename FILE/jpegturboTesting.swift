@@ -45,10 +45,10 @@ func test4() {
     //    fseek(jpegFile, 0, SEEK_END)
     //    let size = ftell(jpegFile)
     //    print(size)
-    let img = jtImage.init(jpeg: URL(string: path)!, byteOrdering: .rgb, imageFormat: .BGRA8888, channelCount: 4)
+    let img = jtImage.init(jpeg: URL(string: path)!, imageFormat: .BGRA8888, channelCount: 4)
     let imgTensor = img.resized(to: (160, 160)).tensor / 255.0
     showTensorImage(imgTensor)
-    let path = "/Users/ayushitiwari/Downloads/tiger.jpg"
+    let path = "/Users/ayush517/Downloads/tigerAUG23.jpg"
     let url = URL(fileURLWithPath: path)
     img.save(to: url)
 }
