@@ -82,6 +82,7 @@ public struct jtImage {
         let loadedTensor = Tensor<UInt8>(
                 shape: [Int(self.imageData.height), Int(self.imageData.width), Int(finalChannelCount)], scalars: data)
         self.imageTensor = .uint8(data: loadedTensor)
+        self.imageData.buffer.deallocate()
         
     }
 
